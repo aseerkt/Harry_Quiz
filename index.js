@@ -18,14 +18,14 @@ console.log("Welcome "+name+"! "+"Let us see how well do you know Harry Potter ?
 var questions=[
   {
     question:"Name Harry Potter's Parents. ",
-    answer: "James and Lily Potter"
+    answer: "James Potter and Lily Potter"
   },
   {
     question:"Name of Harry Potter's owl.",
     answer:"Hedwig"
   },
   {
-    question:"Draco Malfoy's Dad. ",
+    question:"Name Draco Malfoy's Dad. ",
     answer:"Lucius Malfoy"
   },
   {
@@ -37,25 +37,30 @@ var questions=[
     answer:"Avada Kedavra"
   },
   {
-    question:"Spell for disarming someone. ",
+    question:"What was the spell for disarming someone?",
     answer:"Expelliarmus"
   },
   {
-    question:"Harry Potter's godfather. ",
+    question:"Who was Harry Potter's godfather? ",
     answer:"Sirius Black"
   },
   {
-    question:"Ron's pet name. ",
+    question:"What was Ron's pet name ?",
     answer:"Scabbers"
   },
   {
-    question:"Name a muggle.",
+    question:"Name Harry's muggle friend.",
     answer:"Hermione"
   },
   {
     question:"Harry Potter's eye colour.",
     answer:"Green"
+  },
+  {
+    question:"Where did Harry meet Tom Riddle for the first time?",
+    answer:"Chamber of Secrets"
   }
+  
   
 ];
 
