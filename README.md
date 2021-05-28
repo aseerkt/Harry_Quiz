@@ -1,5 +1,7 @@
 # Harry Potter Quiz
 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![JavaScript brushed](https://img.shields.io/badge/JavaScript-brushed-orange)]() [![maintained yes](https://img.shields.io/badge/maintained-yes-brightgreen)]() [![contributions welcome](https://img.shields.io/badge/contributions-welcome-blue)]()
+
 
 
 Do you also call yourself **Potterhead** ? 🎩
