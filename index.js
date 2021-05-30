@@ -9,7 +9,7 @@ let name = null;
 
 function welcome() {
   console.log(`✣  Welcome to HARRY QUIZ ✣\n`.magenta.bold.underline);
-  name = readLineSync.question('❓ What is your name?\n'.yellow);
+  name = readLineSync.question('What is your name?\n'.yellow);
   console.log(
     `Welcome ${name}! Let us see how well do you know Harry Potter\n`.cyan
   );
