@@ -1,103 +1,136 @@
 //Harry Quiz
-var readLineSync = require("readline-sync");
+require('colors');
+let readLineSync = require('readline-sync');
 
+let score = 0;
 
-var score=0;
-
-function welcome(){
-  var name=readLineSync.question("What is you name ? ");
-console.log("Welcome "+name+"! "+"Let us see how well do you know Harry Potter ? ");
+function welcome() {
+  let name = readLineSync.question('What is your name?\n');
+  console.log(
+    `Welcome ${name}! Let us see how well do you know Harry Potter?\n`
+  );
 }
 
-
-
-
-
-
-
-var questions=[
+let questions = [
   {
-    question:"Name Harry Potter's Parents. ",
-    answer: "James Potter and Lily Potter"
+    question: "Name of Harry Potter's Father",
+    options: ['Severus Snape', 'Gandalf', 'Voldemort', 'James Potter'],
+    answer: 4,
   },
   {
-    question:"Name of Harry Potter's owl.",
-    answer:"Hedwig"
+    question: "Name of Harry Potter's owl",
+    options: ['Hedwig', 'Fluffy', 'Padfoot', 'Norbert'],
+    answer: 1,
   },
   {
-    question:"Name Draco Malfoy's Dad. ",
-    answer:"Lucius Malfoy"
+    question: "Name Draco Malfoy's Dad.",
+    options: [
+      'Narcissa Malfoy',
+      'John Malfoy',
+      'Lucius Malfoy',
+      'James Malfoy',
+    ],
+    answer: 3,
   },
   {
-    question:"Name of Lord Voldemort's loyal snake. ",
-    answer:"Nagini"
+    question: "Name of Lord Voldemort's loyal snake",
+    options: ['Padfoot', 'Norbert', 'Fang', 'Nagini'],
+    answer: 4,
   },
   {
-    question:"Name the killing curse. ",
-    answer:"Avada Kedavra"
+    question: 'The `Killing Curse` spell of Voldemort',
+    options: [
+      'Expecto patronum',
+      'Avada Kedavra',
+      'Wingardium Leviosa',
+      'Expelliarmus',
+    ],
+    answer: 2,
   },
   {
-    question:"What was the spell for disarming someone?",
-    answer:"Expelliarmus"
+    question: 'What is the spell used for disarming people?',
+    options: [
+      'Expecto patronum',
+      'Avada Kedavra',
+      'Wingardium Leviosa',
+      'Expelliarmus',
+    ],
+    answer: 4,
   },
   {
-    question:"Who was Harry Potter's godfather? ",
-    answer:"Sirius Black"
+    question: "Who is Harry Potter's godfather?",
+    options: ['Voldemort', 'Hagrid', 'Tommy Angelo', 'Sirius Black'],
+    answer: 4,
   },
   {
-    question:"What was Ron's pet name ?",
-    answer:"Scabbers"
+    question: "What was Ron's pet name?",
+    options: ['Scrabbers', 'Norbert', 'Fang', 'Hedwig'],
+    answer: 1,
   },
   {
-    question:"Name Harry's muggle friend.",
-    answer:"Hermione"
+    question: 'Who did Draco Malfoy called Mudblood?',
+    options: ['Hermione', 'Ron Weasley', 'Harry Potter', 'Ginny'],
+    answer: 1,
   },
   {
-    question:"Harry Potter's eye colour.",
-    answer:"Green"
+    question: 'Who married Harry Potter?',
+    options: ['Hermione', 'Luna Lovegood', 'Ginny Weasely', 'Cho Chang'],
+    answer: 3,
   },
   {
-    question:"Where did Harry meet Tom Riddle for the first time?",
-    answer:"Chamber of Secrets"
-  }
-  
-  
+    question: 'Where did exactly Harry meet Tom Riddle for the first time?',
+    options: [
+      'Hogwarts',
+      'Chamber of Secrets',
+      'Little Hangleton',
+      "Godric's Hollow",
+    ],
+    answer: 2,
+  },
 ];
 
+function askQuestion(question) {
+  // Format options to display
+  const printOptionsString = question.options
+    .map((opt, index) => `${index + 1}. ${opt}\n`)
+    .join('');
 
+  // Ask Question
+  let userAnswer = readLineSync.question(
+    `${question.question}\n\n${printOptionsString}`.blue.bold
+  );
 
-function play(question,answer){
-  var userAnswer=readLineSync.question(question);
-  if(userAnswer.toUpperCase() === answer.toUpperCase()) {
-    console.log("Right");
+  const userOption = parseInt(userAnswer);
+
+  // Check whether user given options in the expected range
+  if (![1, 2, 3, 4].includes(userOption)) {
+    console.log(`You have given wrong options, Please try again`);
+    askQuestion(question);
+  }
+
+  // Calculate score
+  if (userOption === question.answer) {
+    console.log('\nRight'.green);
     score++;
-  }
-  else{
-    console.log("Wrong");
+  } else {
+    console.log('\nWrong'.red);
   }
 
-  console.log("Current Score: ",score);
-  console.log("-------------");
+  console.log(`Current Score: ${score}`.yellow.bold);
+  console.log('-------------');
 }
 
-
-function game(){
-  for(var i=0; i<questions.length;i++){
-    var currentQuestion=questions[i];
-    play(currentQuestion.question , currentQuestion.answer)
+function game() {
+  for (let i = 0; i < questions.length; i++) {
+    let currentQuestion = questions[i];
+    askQuestion(currentQuestion);
   }
 }
 
-
-
-function showScore(){
-  console.log("Yay! You scored ",score);
-
+function showScore() {
+  console.log(`Yay! You scored ${score}`.bgYellow.black);
 }
 
 welcome();
 game();
 showScore();
-
-
-
